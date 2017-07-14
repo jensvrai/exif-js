@@ -417,8 +417,8 @@
     }
 
     function findEXIFinJPEG(file) {
-        var dataView = new DataView(file);
-
+        var dataView = new DataView(file, 0, 512);
+        console.log('512', file.byteLength)
         if (debug) console.log("Got file of length " + file.byteLength);
         if ((dataView.getUint8(0) != 0xFF) || (dataView.getUint8(1) != 0xD8)) {
             if (debug) console.log("Not a valid JPEG");
